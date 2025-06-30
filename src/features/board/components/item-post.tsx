@@ -1,9 +1,21 @@
+'use client'
+import { useState } from "react";
 import { ActionPost } from "./action-post";
 import { ButtonApply } from "./button-apply";
+import { Modal } from "@/components/ui/modal";
 
-export const ItemPost = () => {
+type ItemPostProps = {
+  onClick?: () => void
+}
+
+export const ItemPost = (props: ItemPostProps) => {
+  const {onClick} = props;
+
   return (
-    <div className="flex flex-row items-center justify-between w-full max-w-7xl p-4 gap-x-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+    <div 
+      className="flex flex-row items-center justify-between w-full max-w-7xl p-4 gap-x-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+      onClick={onClick}
+      >
       <div>
         <div className="p-4 rounded-2xl flex items-center justify-center bg-white w-32 h-32">
           LOGO
@@ -46,8 +58,9 @@ export const ItemPost = () => {
       </div>
       <div className="flex flex-col items-end justify-between gap-y-7">
         <ActionPost />
-        <ButtonApply />
+        <ButtonApply onClick={onClick} />
       </div>
+      
     </div>
   );
 };
