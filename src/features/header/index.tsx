@@ -1,4 +1,4 @@
-import { bgPrimary } from "@/utils/const";
+import { bgPrimary } from "@/lib/utils/const";
 import { headerAuth, headerMenu } from "./const";
 
 export const Header = () => {

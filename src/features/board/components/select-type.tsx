@@ -1,4 +1,4 @@
-import { bgPrimary } from "@/utils/const";
+import { bgPrimary } from "@/lib/utils/const";
 
 export const SelectType = () => {
   return (

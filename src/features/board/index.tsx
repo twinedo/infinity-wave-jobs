@@ -1,4 +1,4 @@
-import { bgPrimary } from "@/utils/const";
+import { bgPrimary } from "@/lib/utils/const";
 import { ButtonSearch } from "./components/button-search";
 import { SearchBox } from "./components/searchbox";
 import { SelectType } from "./components/select-type";
