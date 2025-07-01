@@ -4,7 +4,7 @@ export const ApplicantInfo = (props: Partial<Job>) => {
   const { applicants = 0, posted_date } = props;
 
   return (
-    <div className="flex flex-row items-center gap-x-4">
+    <div className="flex flex-row flex-wrap items-center gap-x-4 gap-y-4">
       {applicants < 50 && (
         <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-[12px] text-white p-2 rounded-2xl font-bold shadow-xl">
           Be an early applicant

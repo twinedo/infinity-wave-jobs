@@ -11,7 +11,7 @@ type SocialMediaProps = {
 export const SocialMedia = (props: SocialMediaProps) => {
   const { linkedin, glassdoor, twitter } = props;
   return (
-    <div className="flex flex-row items-center gap-x-2 ml-3">
+    <div className="flex flex-row items-center gap-x-2">
       <a href={linkedin} target="_blank">
         <ButtonIcon>
           <FaLinkedin size={16} />

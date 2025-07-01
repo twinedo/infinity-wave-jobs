@@ -19,7 +19,7 @@ export const CompanyInfo = (props: CompanyInfoProps) => {
 
   return (
     <div className="flex flex-col gap-y-3">
-      <div className="flex flex-col gap-y-2">
+      <div className="flex md:flex-col flex-row items-center md:items-start md:gap-y-2 gap-x-2">
         <div className="font-bold">{company}</div>
         <div className="text-xs">{company_business}</div>
       </div>

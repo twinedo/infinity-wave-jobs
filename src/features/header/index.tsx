@@ -1,5 +1,11 @@
 import { bgPrimary } from "@/lib/utils/const";
 import { headerAuth, headerMenu } from "./const";
+import { GiHamburgerMenu } from "react-icons/gi";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export const Header = () => {
   return (
@@ -17,12 +23,43 @@ export const Header = () => {
             </a>
           ))}
         </nav>
-        <div className="flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           {headerAuth.map((item) => (
             <a key={item.title} href={item.href} className={item.className}>
               {item.title}
             </a>
           ))}
+        </div>
+        <div className="md:hidden flex">
+          <Popover>
+            <PopoverTrigger>
+              <GiHamburgerMenu size={32} color="black" />
+            </PopoverTrigger>
+            <PopoverContent className="flex flex-col gap-y-2">
+              <nav className="flex flex-col gap-y-2">
+                {headerMenu.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className={item.className}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </nav>
+              <div className="flex flex-col gap-y-2">
+                {headerAuth.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className={item.className}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </header>

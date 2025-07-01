@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 
 type ModalProps = {
@@ -24,6 +24,19 @@ export const Modal = ({
   contentClassName = "",
   bgPrimary = "bg-white dark:bg-gray-800",
 }: ModalProps) => {
+  useEffect(() => {
+    // Prevent body scrolling when modal is open
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -36,7 +49,7 @@ export const Modal = ({
       />
 
       <div
-        className={`relative w-full max-w-7xl rounded-xl shadow-xl ${bgPrimary} ${modalClassName}`}
+        className={`relative w-full max-w-7xl max-h-[calc(100vh-2rem)] rounded-xl shadow-xl ${bgPrimary} ${modalClassName}`}
         onClick={(e) => e.stopPropagation()}
       >
         {(title || closeButton) && (
@@ -53,7 +66,14 @@ export const Modal = ({
           </div>
         )}
 
-        <div className={`p-6 ${contentClassName}`}>{children}</div>
+        <div
+          className={`p-6 overflow-y-auto md:overflow-y-hidden ${contentClassName}`}
+          style={{
+            maxHeight: "calc(100vh - 10rem)",
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

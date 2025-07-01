@@ -3,7 +3,7 @@ import { TbMessageReportFilled } from "react-icons/tb";
 
 export const ActionPost = () => {
   return (
-    <div className="flex flex-row gap-x-3">
+    <div className="flex flex-row gap-x-3" >
       <div>
         <FaRegBookmark
           size={24}

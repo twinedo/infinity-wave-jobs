@@ -24,11 +24,11 @@ export const ItemPost = (props: ItemPostProps) => {
 
   return (
     <div
-      className="flex flex-row items-center justify-between w-full max-w-7xl p-4 gap-x-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+      className="flex flex-col md:flex-row md:items-center justify-between w-full max-w-7xl p-4 md:gap-x-4 gap-y-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
       onClick={onClick}
       {...props}
     >
-      <div>
+      <div className="flex flex-row justify-between">
         <div className="p-4 rounded-2xl flex items-center justify-center bg-white w-32 h-32">
           <img
             alt="company_logo"
@@ -36,10 +36,13 @@ export const ItemPost = (props: ItemPostProps) => {
             className="w-24 h-24 object-contain"
           />
         </div>
+        <div className="md:hidden flex">
+          <ActionPost />
+        </div>
       </div>
       <div className="flex flex-1 flex-col items-start gap-y-4">
         <ApplicantInfo applicants={applicants} posted_date={posted_date} />
-        <div className="text-4xl font-bold">{title}</div>
+        <div className="text-3xl md:text-4xl font-bold">{title}</div>
         <div className="flex flex-row items-center gap-x-2">
           <div className="">{company}</div>
           <div className="text-gray-600">/ {company_business}</div>
@@ -54,7 +57,9 @@ export const ItemPost = (props: ItemPostProps) => {
         />
       </div>
       <div className="flex flex-col items-end justify-between gap-y-7">
-        <ActionPost />
+        <div className="hidden md:flex">
+          <ActionPost />
+        </div>
         <ButtonApply onClick={onClick} />
       </div>
     </div>

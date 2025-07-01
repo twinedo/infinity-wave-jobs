@@ -21,7 +21,7 @@ export const Board = () => {
   useEffect(() => {
     if (
       (!loading && jobs.length > 0) ||
-      (jobType === "" && searchQuery.length === 0)
+      (!loading && jobType === "" && searchQuery.length === 0)
     ) {
       setFilteredJobs(jobs);
     }
@@ -59,7 +59,7 @@ export const Board = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col gap-y-4">
-      <div className="flex flex-row items-center gap-x-4">
+      <div className="flex md:flex-row flex-col md:items-center md:gap-x-4 gap-y-3">
         <SearchBox
           value={searchQuery}
           onChange={setSearchQuery}
@@ -99,7 +99,7 @@ export const Board = () => {
               onClick={() => onSelectItem(item)}
             />
           ))}
-        {filteredJobs.length === 0 && (
+        {(filteredJobs.length === 0 && !loading) && (
           <div className="text-center text-white text-2xl">No Jobs found</div>
         )}
       </div>

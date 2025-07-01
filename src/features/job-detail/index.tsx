@@ -32,15 +32,20 @@ export const JobDetail = (props: JobDetailProps) => {
   } = props.data;
 
   return (
-    <div className="flex flex-row items-start gap-x-6">
-      <div className="flex flex-col gap-y-4 w-1/5">
-        <div className="flex flex-col gap-y-2">
-          <div className="p-4 rounded-2xl flex items-center justify-center bg-white w-32 h-32">
-            <img
-              alt="company_logo"
-              src={company_logo}
-              className="w-24 h-24 object-contain"
-            />
+    <div className="flex flex-col md:flex-row items-start md:gap-x-6 gap-y-6">
+      <div className="flex flex-col gap-y-4 md:w-1/5 w-full">
+        <div className="flex flex-col md:items-center gap-y-2 w-full ">
+          <div className="flex flex-row gap-x-5 justify-between">
+            <div className="p-4 rounded-2xl flex items-center justify-center bg-white w-32 h-32">
+              <img
+                alt="company_logo"
+                src={company_logo}
+                className="w-24 h-24 object-contain"
+              />
+            </div>
+            <div className="md:hidden">
+              <ActionPost />
+            </div>
           </div>
           <SocialMedia
             linkedin={social_media.linkedin}
@@ -71,11 +76,11 @@ export const JobDetail = (props: JobDetailProps) => {
               applicants={applicants}
             />
           </div>
-          <div className="flex">
+          <div className="md:flex hidden">
             <ActionPost />
           </div>
         </div>
-        <div className="flex flex-row grow items-center gap-x-4">
+        <div className="flex flex-col md:flex-row grow items-center md:gap-x-4 gap-y-4">
           <div className="flex flex-1">
             <Responsibilities data={responsibilities} />
           </div>
