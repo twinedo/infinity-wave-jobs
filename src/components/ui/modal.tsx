@@ -46,7 +46,7 @@ export const Modal = ({
             {closeButton && (
               <button 
                 onClick={onClose}
-                className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="p-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <MdClose className="w-5 h-5" />
               </button>

@@ -43,7 +43,7 @@ export const JobDetail = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-y-3">
+      <div className="flex flex-col gap-y-6">
         <div className="flex flex-row">
           <div className="flex flex-1">
             <JobDescription />
