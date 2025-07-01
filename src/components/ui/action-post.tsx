@@ -1,4 +1,4 @@
-import { FaBookmark, FaRegBookmark, FaShareAlt } from "react-icons/fa";
+import { FaRegBookmark, FaShareAlt } from "react-icons/fa";
 import { TbMessageReportFilled } from "react-icons/tb";
 
 export const ActionPost = () => {

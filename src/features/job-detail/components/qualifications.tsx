@@ -1,8 +1,18 @@
-export const Qualifications = () => {
+type QualificationsProps = {
+  data: string[];
+};
+
+export const Qualifications = (props: QualificationsProps) => {
+  const { data } = props;
   return (
     <div className="flex flex-col gap-y-3">
       <div className="text-2xl font-bold text-black">Qualifications</div>
-      <div>React.js , Next.js, Javascript, Typescript</div>
+
+      <div className="flex flex-col gap-y-3">
+        {data.map((item) => (
+          <div key={item}>{item}</div>
+        ))}
+      </div>
     </div>
   );
 };

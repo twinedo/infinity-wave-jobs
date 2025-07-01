@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import { MdClose } from "react-icons/md";
 
 type ModalProps = {
@@ -10,7 +10,7 @@ type ModalProps = {
   overlayClassName?: string;
   modalClassName?: string;
   contentClassName?: string;
-  bgPrimary?: string; // Your custom background class
+  bgPrimary?: string;
 };
 
 export const Modal = ({
@@ -19,32 +19,31 @@ export const Modal = ({
   children,
   title,
   closeButton = true,
-  overlayClassName = '',
-  modalClassName = '',
-  contentClassName = '',
-  bgPrimary = 'bg-white dark:bg-gray-800', // Default if not provided
+  overlayClassName = "",
+  modalClassName = "",
+  contentClassName = "",
+  bgPrimary = "bg-white dark:bg-gray-800",
 }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${overlayClassName}`}>
-      {/* Overlay */}
-      <div 
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${overlayClassName}`}
+    >
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      
-      {/* Modal container */}
-      <div 
+
+      <div
         className={`relative w-full max-w-7xl rounded-xl shadow-xl ${bgPrimary} ${modalClassName}`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         {(title || closeButton) && (
           <div className="flex items-center justify-between p-4 border-b">
             <h3 className="text-xl font-semibold">{title}</h3>
             {closeButton && (
-              <button 
+              <button
                 onClick={onClose}
                 className="p-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700"
               >
@@ -53,11 +52,8 @@ export const Modal = ({
             )}
           </div>
         )}
-        
-        {/* Content */}
-        <div className={`p-6 ${contentClassName}`}>
-          {children}
-        </div>
+
+        <div className={`p-6 ${contentClassName}`}>{children}</div>
       </div>
     </div>
   );

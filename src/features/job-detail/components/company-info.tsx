@@ -2,8 +2,11 @@ import { FaRegCalendar } from "react-icons/fa";
 import { LuMapPinCheckInside } from "react-icons/lu";
 import { IoPersonOutline } from "react-icons/io5";
 import { TbWorld } from "react-icons/tb";
+import { ReactNode } from "react";
 
 type CompanyInfoProps = {
+  company: string;
+  company_business: string;
   foundedIn: string;
   address: string;
   employees: string;
@@ -11,39 +14,31 @@ type CompanyInfoProps = {
 };
 
 export const CompanyInfo = (props: CompanyInfoProps) => {
-  const { foundedIn, address, employees, website } = props;
+  const { company, company_business, foundedIn, address, employees, website } =
+    props;
+
   return (
-    <div className="flex flex-col items-start gap-y-3">
-      <div className="flex flex-row items-center gap-x-2">
-        <div>
-          <FaRegCalendar size={16} />
-        </div>
-        <div className="text-sm text-black">{foundedIn}</div>
+    <div className="flex flex-col gap-y-3">
+      <div className="flex flex-col gap-y-2">
+        <div className="font-bold">{company}</div>
+        <div className="text-xs">{company_business}</div>
       </div>
-      <div className="flex flex-row items-center gap-x-2">
-        <div>
-          <LuMapPinCheckInside size={16} />
-        </div>
-        <div className="text-sm text-black">{address}</div>
+
+      <div className="flex flex-col items-start gap-y-2">
+        <RowItem icon={<FaRegCalendar size={16} />} text={foundedIn} />
+        <RowItem icon={<LuMapPinCheckInside size={16} />} text={address} />
+        <RowItem icon={<IoPersonOutline size={16} />} text={employees} />
+        <RowItem icon={<TbWorld size={16} />} text={website} />
       </div>
-      <div className="flex flex-row items-center gap-x-2">
-        <div>
-          <IoPersonOutline size={16} />
-        </div>
-        <div className="text-sm text-black">{employees}</div>
-      </div>
-      <div className="flex flex-row items-center gap-x-2">
-        <div>
-          <TbWorld size={16} />
-        </div>
-        <a
-          className="text-sm text-black cursor-pointer"
-          href={website}
-          target="_blank"
-        >
-          {website}
-        </a>
-      </div>
+    </div>
+  );
+};
+
+const RowItem = ({ text, icon }: { text: string; icon: ReactNode }) => {
+  return (
+    <div className="flex flex-row items-center gap-x-2">
+      {icon}
+      <div className="text-sm text-black">{text}</div>
     </div>
   );
 };
