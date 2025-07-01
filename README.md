@@ -1,3 +1,15 @@
+# Infinity Wave Jobs
+Website for job seeker, talent seeker (coming soon). You can find job easily here.<br>
+<br>
+Type your Position/Location/Country in Search box and you will find the jobs.<br>
+<br>
+Click on job list to show Information Detail. <br>
+<br>
+[Live Demo](https://infinity-wave-jobs.vercel.app/)
+
+![image](https://github.com/user-attachments/assets/7fec8bab-84cd-4aab-9f0b-cefa6c33795d)
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
