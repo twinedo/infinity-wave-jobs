@@ -10,7 +10,7 @@ interface Job {
   company_business: string;
   title: string;
   location: "Remote" | "Hybrid" | "Onsite";
-  job_type: "full-time" | "part-time" | "contract" | "internship";
+  job_type: "Full-Time" | "Part-Time" | "Contract" | "Internship";
   posted_date: string;
   country: string;
   salary_range: string;

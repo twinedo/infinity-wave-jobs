@@ -5,15 +5,52 @@ import { SearchBox } from "./components/searchbox";
 import { SelectType } from "./components/select-type";
 import { ItemPost } from "./components/item-post";
 import { Modal } from "@/components/ui/modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { JobDetail } from "../job-detail";
 import { useJobs } from "@/hooks/useJob";
 
 export const Board = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<Job>();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [jobType, setJobType] = useState("");
 
   const { jobs, loading, error } = useJobs();
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
+
+  useEffect(() => {
+    if (
+      (!loading && jobs.length > 0) ||
+      (jobType === "" && searchQuery.length === 0)
+    ) {
+      setFilteredJobs(jobs);
+    }
+  }, [loading, jobs, jobType, searchQuery]);
+
+  const onSearch = () => {
+    let results = [...jobs];
+
+    if (searchQuery.trim() !== "") {
+      results = results.filter(
+        (job) =>
+          job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.company_business
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
+          job.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.country.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    if (jobType !== "") {
+      results = results.filter(
+        (job) => job.job_type.toLowerCase() === jobType.toLowerCase()
+      );
+    }
+
+    setFilteredJobs(results);
+  };
 
   const onSelectItem = (job: Job) => {
     setSelectedJob(job);
@@ -23,9 +60,16 @@ export const Board = () => {
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col gap-y-4">
       <div className="flex flex-row items-center gap-x-4">
-        <SearchBox />
-        <SelectType />
-        <ButtonSearch />
+        <SearchBox
+          value={searchQuery}
+          onChange={setSearchQuery}
+          onClear={() => {
+            setSearchQuery("");
+            onSearch();
+          }}
+        />
+        <SelectType value={jobType} onChange={setJobType} />
+        <ButtonSearch onClick={onSearch} />
       </div>
       <div
         className={
@@ -38,8 +82,8 @@ export const Board = () => {
             Something wrong. Please try again
           </div>
         )}
-        {jobs.length > 0 &&
-          jobs.map((item) => (
+        {filteredJobs.length > 0 &&
+          filteredJobs.map((item) => (
             <ItemPost
               key={item.id}
               applicants={item.applicants}
@@ -55,6 +99,9 @@ export const Board = () => {
               onClick={() => onSelectItem(item)}
             />
           ))}
+        {filteredJobs.length === 0 && (
+          <div className="text-center text-white text-2xl">No Jobs found</div>
+        )}
       </div>
       {selectedJob && (
         <Modal
