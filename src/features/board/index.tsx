@@ -7,6 +7,7 @@ import { ItemPost } from "./components/item-post";
 import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import { ButtonApply } from "./components/button-apply";
+import { JobDetail } from "../job-detail";
 
 export const Board = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,8 +35,8 @@ export const Board = () => {
         modalClassName="max-w-7xl" 
         contentClassName="flex flex-col gap-4"
       >
-        <p>This is your modal content. You can put anything here.</p>
-        <ButtonApply />
+        <JobDetail />
+        
       </Modal>
     </div>
   );

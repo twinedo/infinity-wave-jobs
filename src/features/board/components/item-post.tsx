@@ -1,8 +1,6 @@
 'use client'
-import { useState } from "react";
 import { ActionPost } from "./action-post";
 import { ButtonApply } from "./button-apply";
-import { Modal } from "@/components/ui/modal";
 
 type ItemPostProps = {
   onClick?: () => void
